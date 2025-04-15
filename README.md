@@ -1,4 +1,6 @@
-# Excel Macros Library
+### excel-craft
+
+## An excel macros library
 
 A lightweight Node.js library for reading, manipulating, and creating Excel files (`.xlsx` and `.xlsm`) while preserving macros in `.xlsm` files. Built with minimal dependencies and optimized for performance.
 
@@ -72,6 +74,7 @@ await workbook.writeWorkbook('output.xlsm');
   - **Parameters**:
     - `filePath`: Path to the input Excel file.
   - **Example**:
+
     ```typescript
     await workbook.readWorkbook('input.xlsx');
     ```
@@ -81,6 +84,7 @@ await workbook.writeWorkbook('output.xlsm');
   - **Parameters**:
     - `filePath`: Path to save the output Excel file.
   - **Example**:
+
     ```typescript
     await workbook.writeWorkbook('output.xlsx');
     ```
@@ -92,6 +96,7 @@ await workbook.writeWorkbook('output.xlsm');
     - `cellRef`: Cell reference (e.g., `A1`).
     - `value`: New value for the cell.
   - **Example**:
+
     ```typescript
     workbook.updateCell('Sheet1', 'A1', 'New Value');
     ```
@@ -99,6 +104,7 @@ await workbook.writeWorkbook('output.xlsm');
 - **`getSheetNames(): string[]`**
   - Returns a list of all sheet names in the workbook.
   - **Example**:
+
     ```typescript
     const sheetNames = workbook.getSheetNames();
     console.log(sheetNames);
@@ -107,6 +113,7 @@ await workbook.writeWorkbook('output.xlsm');
 - **`getSheetCount(): number`**
   - Returns the total number of sheets in the workbook.
   - **Example**:
+
     ```typescript
     const sheetCount = workbook.getSheetCount();
     console.log(sheetCount);
