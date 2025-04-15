@@ -1,6 +1,6 @@
 ### excel-craft
 
-## An excel macros library
+## an excel macros library
 
 A lightweight Node.js library for reading, manipulating, and creating Excel files (`.xlsx` and `.xlsm`) while preserving macros in `.xlsm` files. Built with minimal dependencies and optimized for performance.
 

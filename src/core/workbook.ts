@@ -1,14 +1,11 @@
 import { ZipHandler } from './zipHandler';
-import { XmlParser } from './xmlParser';
 import { NativeExcelParser } from './nativeExcelParser';
 import * as fs from 'fs';
 import * as fsp from 'fs/promises';
-import { DOMParser, XMLSerializer } from 'xmldom';
+import { DOMParser } from 'xmldom';
 import AdmZip = require('adm-zip');
 import path from 'path';
 import os from 'os';
-import archiver from 'archiver';
-import ExcelJS from 'exceljs';
 import { ExcelLogger } from './logger';
 
 interface Cell {

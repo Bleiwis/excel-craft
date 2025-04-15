@@ -25,24 +25,7 @@ export class XmlParser {
      */
     public async parseXml(xml: string): Promise<any> {
         try {
-            const result = await parseStringAsync(xml, {
-                explicitArray: false,
-                mergeAttrs: true,
-                explicitRoot: true,
-                preserveChildrenOrder: true,
-                strict: true,
-                trim: true,
-                normalize: true,
-                normalizeTags: false,
-                explicitChildren: false,
-                emptyTag: null,
-                ignoreAttrs: false,
-                explicitCharkey: false,
-                attrkey: '$',
-                charkey: '_',
-                includeWhiteChars: false,
-                async: true
-            });
+            const result = await parseStringAsync(xml);
             return result;
         } catch (error) {
             this.logger.logError(error as Error, 'parseXml');
@@ -75,13 +58,13 @@ export class XmlParser {
      */
     static findNodesByTag(node: XmlNode, tag: string): XmlNode[] {
         const nodes: XmlNode[] = [];
-        
+
         // Check both with and without namespace
         const checkTag = (nodeTag: string) => {
-            return nodeTag === tag || 
-                   nodeTag === `x_${tag}` || 
-                   nodeTag === `ns_${tag}` ||
-                   nodeTag.endsWith(`_${tag}`);
+            return nodeTag === tag ||
+                nodeTag === `x_${tag}` ||
+                nodeTag === `ns_${tag}` ||
+                nodeTag.endsWith(`_${tag}`);
         };
 
         if (checkTag(node.tag)) {
@@ -112,9 +95,9 @@ export class XmlParser {
      */
     static getAttribute(node: XmlNode, name: string): string | undefined {
         // Check both with and without namespace
-        return node.attributes[name] || 
-               node.attributes[`x_${name}`] || 
-               node.attributes[`ns_${name}`] ||
-               node.attributes[`r_${name}`];
+        return node.attributes[name] ||
+            node.attributes[`x_${name}`] ||
+            node.attributes[`ns_${name}`] ||
+            node.attributes[`r_${name}`];
     }
 }
