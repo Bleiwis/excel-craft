@@ -125,6 +125,55 @@ await workbook.writeWorkbook('output.xlsm');
 
 ---
 
+## Understanding Excel Files: Under the Hood
+
+Before diving into using this library, it's helpful to understand how Excel files work internally. Excel files, especially `.xlsx` and `.xlsm`, are essentially ZIP archives containing various XML files that define the workbook's structure, data, and formatting.
+
+### Key Components of an Excel File
+
+1. **[Content_Types].xml**
+   - Defines the content types of the files within the archive.
+   - Specifies the relationships between different parts of the workbook.
+
+2. **_rels/.rels**
+   - Contains relationships between the main parts of the workbook.
+   - For example, it links the workbook to its sheets and shared strings.
+
+3. **xl/workbook.xml**
+   - The main file that defines the workbook structure.
+   - Lists all the sheets in the workbook and their properties.
+
+4. **xl/worksheets/sheetX.xml**
+   - Contains the data for each sheet in the workbook.
+   - Each cell's value, type, and optional formula are stored here.
+
+5. **xl/sharedStrings.xml**
+   - Stores all the text values used in the workbook.
+   - Text values are referenced by index in the sheet files to save space.
+
+6. **xl/styles.xml**
+   - Defines the styles applied to cells, such as fonts, colors, and borders.
+
+7. **xl/vbaProject.bin** (for `.xlsm` files)
+   - Contains the macros (VBA code) embedded in the workbook.
+
+### How This Library Works
+
+This library interacts directly with these internal components to read, update, and write Excel files. For example:
+- When you update a cell, the library modifies the corresponding `sheetX.xml` file.
+- When you save a workbook, it reassembles the ZIP archive with the updated XML files.
+
+### Why This Knowledge is Important
+
+Understanding the internal structure of Excel files can help you:
+- Debug issues when working with Excel files.
+- Extend the library to support additional features.
+- Optimize performance for large files.
+
+If you're new to this, don't worry! The library abstracts most of these details, but having a basic understanding can be very helpful.
+
+---
+
 ## Input and Output Templates
 
 ### Input Template
