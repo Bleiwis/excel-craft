@@ -1,8 +1,10 @@
 ### excel-craft
 
-## an excel macros library
+## An Open-Source Excel Macros Library
 
 A lightweight Node.js library for reading, manipulating, and creating Excel files (`.xlsx` and `.xlsm`) while preserving macros in `.xlsm` files. Built with minimal dependencies and optimized for performance.
+
+This project was initially created to address specific challenges encountered with other popular libraries like `exceljs` and `xlsx-populate`. While these libraries are excellent and widely used, certain use cases involving macros and large file handling required a more tailored solution. This library aims to complement existing tools by providing a focused approach to Excel file manipulation.
 
 ---
 
@@ -18,10 +20,12 @@ A lightweight Node.js library for reading, manipulating, and creating Excel file
 
 ## Installation
 
-Install the library using npm:
+This library is currently not published on npm. You can clone this repository and use it directly in your projects.
 
 ```bash
-npm install excel-macros-lib
+git clone https://github.com/your-username/excel-craft.git
+cd excel-craft
+npm install
 ```
 
 ---
@@ -31,13 +35,13 @@ npm install excel-macros-lib
 ### Basic Example
 
 ```typescript
-import { ExcelWorkbook } from 'excel-macros-lib';
+import { ExcelWorkbook } from './src';
 
 async function main() {
-    const workbook = new ExcelWorkbook();
+    const workbook = new ExcelWorkbook('input.xlsx');
     
     // Read an existing Excel file
-    await workbook.readWorkbook('input.xlsx');
+    await workbook.readWorkbook();
     
     // Update a cell value
     workbook.updateCell('Sheet1', 'A1', 'Hello, World!');
@@ -54,8 +58,8 @@ main();
 The library automatically detects and preserves macros in `.xlsm` files:
 
 ```typescript
-const workbook = new ExcelWorkbook();
-await workbook.readWorkbook('input.xlsm');
+const workbook = new ExcelWorkbook('input.xlsm');
+await workbook.readWorkbook();
 
 // Macros are automatically preserved when saving
 await workbook.writeWorkbook('output.xlsm');

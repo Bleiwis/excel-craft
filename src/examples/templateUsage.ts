@@ -4,7 +4,7 @@ import * as path from 'path';
 
 async function main() {
     try {
-        const templatePath = path.join(__dirname, '../../test/templates/Form_SUPERMERCADO PERU_ASISTENTE_CON_PROVEEDOR.xlsm');
+        const templatePath = path.join(__dirname, '../../test/templates/input.xlsm');
         
         // Verificar que el archivo existe
         if (!fs.existsSync(templatePath)) {
@@ -25,10 +25,10 @@ async function main() {
        // console.log('Número total de hojas:', sheetCount);
         
         // Actualizar celda usando el nombre de la hoja
-        workbook.updateCell('Formulario', 'A14', 'Nuevo Valor');
+        workbook.updateCell('Hoja1', 'A14', 'Nuevo Valor');
 
-        workbook.updateCell('Formulario', 'B14', 'B  Valor');
-        workbook.updateCell('Formulario', 'C14', 'C Value');
+        workbook.updateCell('Hoja1', 'B14', 'B  Valor');
+        workbook.updateCell('Hoja1', 'C14', 'C Value');
         
         // Asegurarse de que el directorio de salida existe
         const outputDir = path.join(__dirname, '../../test/output');
